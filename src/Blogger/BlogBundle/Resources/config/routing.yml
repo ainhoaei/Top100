@@ -1,0 +1,22 @@
+#blogger_blog_homepage:
+ #   path:     /
+  #  defaults: { _controller: BloggerBlogBundle:Default:index }
+
+blogger_blog_portada:
+    path: /
+    defaults: { _controller: BloggerBlogBundle:Canciones:portada }
+blogger_blog_show:
+    path: /canciones
+    defaults: { _controller: BloggerBlogBundle:Canciones:show }
+blogger_blog_show:
+    path: /show
+    defaults: { _controller: BloggerBlogBundle:Canciones:show }
+
+blogger_blog_estilo_musical:
+    path: /estilo_musical
+    defaults: { _controller: BloggerBlogBundle:Canciones:estilo_musical }
+
+blogger_blog_interprete:
+    path: /interprete
+    defaults: { _controller: BloggerBlogBundle:Canciones:interprete }
+

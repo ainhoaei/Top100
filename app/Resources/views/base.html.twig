@@ -1,0 +1,91 @@
+<!-- DOCUMENTO DE HTML Y CSS. AQUÍ UTILIZAREMOS LA PLANTILLA BAJADA POR INTERNET -->
+
+
+
+<!-- PLANTILLA BASE PARA TODAS LAS VISTAS: aquí tenemos que poner lo que queremos que aparezca en todas las páginas (si hay algo) -->
+
+
+
+<!-- app/Resources/views/base.html.twig -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html"; charset="utf-8" />
+
+      <title>{% block title %}top100{% endblock %} - top100</title>
+
+      <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        
+      <meta name="description" content="website description" />
+      <meta name="keywords" content="website keywords, website keywords" />
+      <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+      {% block stylesheets %}
+          <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine&amp;v1" />
+          <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" />
+          <link href="{{ asset('css/estilo.css') }}" type="text/css" rel="stylesheet" />
+      {% endblock %}
+      <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+
+
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <h1>Top<a href="#">100</a></h1>
+        <div class="slogan">Music inspires life!</div>
+      </div>
+      <div id="menubar">
+
+    {% block navigation %}
+        <nav>
+
+        <ul id="menu">
+          <!-- put class="current" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="current"><a href="{{ path('blogger_blog_portada')}}">Inicio</a></li>
+          <li><a href="{{ path('blogger_blog_estilo_musical')}}">Estilos musicales</a></li>
+          <li><a href="{{ path('blogger_blog_interprete')}}"}">Intérpretes</a></li>
+          <li><a href="{{ path('blogger_blog_show')}}">Información de canciones</a></li>
+          {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('blogger_admin_logout')}}">Salir</a></li>
+            {% endif %}
+        </ul>
+
+        </nav>
+    {% endblock %}
+
+       </div>
+                    
+    </div>
+
+    <div id="site_content">
+      <div id="sidebar_container">
+        <img class="paperclip" src="css/paperclip.png" alt="paperclip" />
+        <div class="sidebar">
+        <!-- insert your sidebar items here -->
+        <h3>Novedades</h3>
+        <h4>¡Nuevas canciones!</h4>
+        <h5>11 de noviembre del 2016</h5>
+        <p>Nueva canción de Bob Marley<br /><a href="#">Leer más</a></p>
+        </div>
+        
+        
+      </div>
+      <div id="content">
+        <!-- insert the page content here -->
+        {% block body %}{% endblock %}
+        
+      </div>
+    </div>
+    <div id="footer">
+      <p>Web creada por GRUPO CUATRO</p>
+      <p></p>
+      <p>{% block blog_tagline %}<a href="#">Creando un blog en Symfony2</a>{% endblock %}</p>
+    </div>
+  </div>
+</body>
+</html>

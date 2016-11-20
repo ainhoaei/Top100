@@ -1,0 +1,29 @@
+{# src/Blogger/BlogBundle/Resources/views/Canciones/estilo_musical.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Estilo musical{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Estilos musicales</h1>
+    </header>
+
+    <p>Información sobre los estilos musical:</p>
+	<ul>
+
+	{# desde aquí tenemos que acceder a la base de datos en vez de escribir estilo 1 y 2 #}
+	{% for estilo in estilos %}
+		<li>{{estilo.nombre}}</li>
+		<li>{{estilo.descrip}}</li>
+
+
+		<div class="snippet"> {# lista de canciones: titulo --> hiperenlace #}
+           <p><a href="{{ path('blogger_blog_canciones', { 'id': canciones.id }) }}"></a>{{ canciones.estilos }}</p> 
+       </div> 
+
+    {% else %}
+        <p>No hay estilos en la Base de Datos</p>
+    {% endfor %}
+
+	</ul>
+{% endblock %}

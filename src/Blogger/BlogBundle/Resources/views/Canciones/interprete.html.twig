@@ -1,0 +1,22 @@
+{# src/Blogger/BlogBundle/Resources/views/Canciones/interprete.html.twig #}
+{% extends 'BloggerBlogBundle::layout.html.twig' %}
+
+{% block title %}Intépretes{% endblock%}
+
+{% block body %}
+    <header>
+        <h1>Intépretes</h1>
+    </header>
+
+    <p>Información sobre los intérpretes:</p>
+	<ul>
+
+	{# desde aquí tenemos que acceder a la base de datos en vez de escribir estilo 1 y 2 #}
+	{% for interprete in interpretes %}
+		<li>{{interprete.nombre}}</li>
+		<li>{{interprete.descripcion}}</li>
+	{% else %}
+        <p>No hay estilos en la Base de Datos</p>
+    {% endfor %}
+	</ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{# EN EL PROYECTO NO UTILIZAREMOS ARCHIVOS PHP, DIRECTAMENTE UTILIZAREMOS LOS .TWIG, HACIENDO LA PLANTILLA DIRECTAMENTE CON TWIG #}
+
+
+{# app/Resources/views/base.html.twig #}
+<!doctype html>
+<html>
+	<head>
+		<title>{% block title %}Default title{% endblock %}</title>
+	</head>
+	<body>
+		{% block body %}hhhhhhhhhhh{% endblock %} {# cuando antes haciamos con %content, ahora lo hacemos de esta forma #}
+	</body>
+</html>

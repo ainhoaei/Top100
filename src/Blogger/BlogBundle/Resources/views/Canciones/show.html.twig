@@ -1,0 +1,39 @@
+{# src/Blogger/BlogBundle/Resources/views/Canciones/show.html.twig #}
+{% extends "BloggerBlogBundle::layout.html.twig" %}
+{% block title %}Detalles de canciones{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+{# <link href="{{ asset('css/blog.css') }}" type="text/css" rel="stylesheet" /> #}
+{% endblock %}
+
+
+{% block body %}
+ 	{% for canciones in canciones2 %}
+        <article class="canciones">
+
+		<div class="snippet">
+	       {# <p>{{ canciones.getInterpreteId }}</p> #}
+	        {# <p class="continue"><a href="{{ path('blogger_blog_show', { 'id': canciones.id }) }}">Seguir leyendo...</a></p> #}
+	    </div>
+
+	    <footer class="meta">
+	        <p> Nombre de la cancion: <a href="{{ path('blogger_blog_show' , { 'id': canciones.id }) }}">{{ canciones.getNombreCancion }}</a></p>
+	        <p>Puesto del ranking: {{ canciones.getPuestoRanking }}</p>
+	        <p>Letra: {{ canciones.getLetra }}</p>
+
+	        {% for interprete in canciones %} 
+	            <p>Interprete: {{ canciones.canciones.nombre }}</p>
+	        {% endfor %}
+
+	        {% for estilos in canciones %}
+	            <p>Estilo musical: {{ canciones.estilos.nombre }}</p>
+	        {% endfor %}
+	    </footer>
+	</article>
+    {% else %}
+        <p>No hay entradas en este blog</p>
+    {% endfor %}
+
+
+{% endblock %}
