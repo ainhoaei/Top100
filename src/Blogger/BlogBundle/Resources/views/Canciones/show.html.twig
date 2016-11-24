@@ -12,12 +12,7 @@
  	{% for canciones in canciones2 %}
         <article class="canciones">
 
-		<div class="snippet">
-	       {# <p>{{ canciones.getInterpreteId }}</p> #}
-	        {# <p class="continue"><a href="{{ path('blogger_blog_show', { 'id': canciones.id }) }}">Seguir leyendo...</a></p> #}
-	    </div>
-
-	    <footer class="meta">
+		<footer class="meta">
 	        <p> Nombre de la cancion: <a href="{{ path('blogger_blog_show' , { 'id': canciones.id }) }}">{{ canciones.getNombreCancion }}</a></p>
 	        <p>Puesto del ranking: {{ canciones.getPuestoRanking }}</p>
 	        <p>Letra: {{ canciones.getLetra }}</p>

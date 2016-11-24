@@ -10,6 +10,27 @@
             <p>Conoce las mejores canciones de la actualidad. Conoce nuevas artistas, nuevas canciones, estilos de música diferentes...</p>
             <p>Visita <a href="http://www.youtube.com">esta página</a>.</p>
 
+    {% for canciones in canciones2 %}
+        <article class="canciones">
+
+        <footer class="meta">
+            <p> Nombre de la cancion: <a href="{{ path('blogger_blog_show' , { 'id': canciones.id }) }}">{{ canciones.getNombreCancion }}</a></p>
+            <p>Puesto del ranking: {{ canciones.getPuestoRanking }}</p>
+
+            {% for estilos in canciones %}
+                <p>Interprete: {{ canciones.canciones.nombre }}</p>
+            {% endfor %}
+
+            {% for estilos in canciones %}
+                <p>Estilo musical: {{ canciones.estilos.nombre }}</p>
+            {% endfor %}
+
+            <p></p>
+        </footer>
+    </article>
+    {% else %}
+        <p>No hay entradas en este blog</p>
+    {% endfor %}
 
 {% endblock %}
 

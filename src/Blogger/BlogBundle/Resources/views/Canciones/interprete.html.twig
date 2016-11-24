@@ -13,8 +13,13 @@
 
 	{# desde aquí tenemos que acceder a la base de datos en vez de escribir estilo 1 y 2 #}
 	{% for interprete in interpretes %}
-		<li>{{interprete.nombre}}</li>
-		<li>{{interprete.descripcion}}</li>
+		<li>{{ interprete.nombre }}</li>
+		<li>{{ interprete.descripcion }}</li>
+
+		{% for canciones in interprete %} 
+	        <p>Interprete: {{ canciones.canciones.nombre }}</p>
+	    {% endfor %}
+
 	{% else %}
         <p>No hay estilos en la Base de Datos</p>
     {% endfor %}

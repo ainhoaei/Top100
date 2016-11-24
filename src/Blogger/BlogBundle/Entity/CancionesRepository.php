@@ -12,19 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class CancionesRepository extends EntityRepository
 {
-	public function findByPortadaCanciones($limit = null)
-	{
-		$qp = $this->createQueryBuilder('c')->select('c')->addGroupBy('c.interprete_id');
-
-		if (false === is_null($limit))
-			$qp->setMaxResults($limit);
-
-		return $qp->getQuery()->getResult();
-	}
-
 	public function getLatestCanciones($limit = null)
 	{
-		$qp = $this->createQueryBuilder('c')->select('c')->addOrderBy('c.puesto_ranking', 'DESC');
+		$qp = $this->createQueryBuilder('c')->select('c')->where('c.puesto_ranking < 11')->addOrderBy('c.puesto_ranking', 'ASC')->addGroupBy('c.interprete_id');
+		//NO FUNCIONA CON C.ESTILOS!!
 
 		if (false === is_null($limit))
 			$qp->setMaxResults($limit);
@@ -32,10 +23,31 @@ class CancionesRepository extends EntityRepository
 		return $qp->getQuery()->getResult();
 	}
 
+	public function getCancionSelected($limit = null)
+	{
+		$qp = $this->createQueryBuilder('c')->select('c')->where('c.puesto_ranking < 11')->addOrderBy('c.puesto_ranking', 'ASC')->addGroupBy('c.interprete_id');
+		//NO FUNCIONA CON C.ESTILOS!!
+
+		if (false === is_null($limit))
+			$qp->setMaxResults($limit);
+
+		return $qp->getQuery()->getResult();
+	}
+
+	
 	public function getCancionesForEstilo($estiloId)
-	/*DAME TODOS LOS COMENTARIOS DE UN POST*/
+	/*DAME TODOS LAS CANCIONES DE UN ESTILO*/
 	{
 		$qp = $this->createQueryBuilder('c')->select('c')->where('c.estilos = :estilos')->setParameter('estilos', $estiloId);
+
+
+		return $qp->getQuery()->getResult();
+	}
+
+	public function getCancionesForInterprete($interpreteId)
+	/*DAME TODOS LAS CANCIONES DE UN INTERPRETE*/
+	{
+		$qp = $this->createQueryBuilder('c')->select('c')->where('c.interprete_id = :interprete')->setParameter('interprete', $interpreteId);
 
 
 		return $qp->getQuery()->getResult();
